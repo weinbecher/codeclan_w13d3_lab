@@ -40,8 +40,14 @@ public class WhiskyTrackerApplicationTests {
 	}
 
 	@Test
-	public void getWhiskyByDistilleryAndAge() {
+	public void getWhiskiesByDistilleryAndAge() {
 		List<Whisky> whiskies = whiskyRepository.findAllByDistilleryIdAndAge(1, 15);
 		assertEquals("The Glendronach Revival", whiskies.get(0).getName());
+	}
+
+	@Test
+	public void getWhiskiesByRegion() {
+		List<Whisky> whiskies = whiskyRepository.findAllByDistilleryRegion("Speyside");
+		assertEquals("The Macallan Anniversary Malt", whiskies.get(0).getName());
 	}
 }
